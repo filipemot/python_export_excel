@@ -2,6 +2,10 @@
 
 Biblioteca para a criação de planilhas excel utilizando python. Demonstrarei como fazer a codificação e disponibilizarei uma pequena biblioteca para ajudar o desenvolvimento.
 
+### Medium
+
+https://medium.com/@filipemot/cria%C3%A7%C3%A3o-planilha-excel-com-python-b576bcc17e5c
+
 ### Introdução 
 `pip install openpyxl`
 
