@@ -78,7 +78,7 @@ def create_row(row, active_sheet, id_row):
     except:
         print('create_row() - workbook_excel_service', 'Error')
 
-def create_sheet(file_workbook, active_sheet, sheet, id_row):
+def create_sheet(file_workbook, active_sheet, sheet):
     """
     Create a sheet
     :param Object{Workbook} | file_workbook:
@@ -87,14 +87,14 @@ def create_sheet(file_workbook, active_sheet, sheet, id_row):
         The object with the instance of Active Sheet
     :param Object{SheetExcel} | sheet:
         The object of type SheetExcel with information of sheet
-    :param int | id_row:
-        The index of row
     """
     try:
         active_sheet = get_active_sheet(active_sheet, sheet, file_workbook)
+        id_row = 1
 
         for row in sheet.row_sheets:
             create_row(row, active_sheet, id_row)
+            id_row = id_row + 1
 
         return active_sheet
     except:
@@ -108,12 +108,10 @@ def create_workbook(workbook):
     """
     try:
         file_workbook = Workbook()
-        id_row = 0
         active_sheet = None
 
         for sheet in workbook.sheets:
-            id_row = 1
-            active_sheet = create_sheet(file_workbook, active_sheet, sheet, id_row)
+            active_sheet = create_sheet(file_workbook, active_sheet, sheet)
 
         file_workbook.save(workbook.filename)
     except:
